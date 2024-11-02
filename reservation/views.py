@@ -1,9 +1,8 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from .models import Menu, Booking
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import generics, viewsets
-from .serializers import BookingSerializer, MenuSerializer
+from rest_framework import generics, viewsets, permissions
+from .serializers import BookingSerializer, MenuSerializer, UserSerializers
 
 # Create your views here La vista recibe el objeto de solicitud HTTP.
 def index(request):
@@ -21,5 +20,11 @@ class SingleMenuItemsView(generics.RetrieveUpdateAPIView, generics.DestroyAPIVie
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializers
+    permission_classes = [permissions.IsAuthenticated]
 
 

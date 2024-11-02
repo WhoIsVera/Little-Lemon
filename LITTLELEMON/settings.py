@@ -125,7 +125,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # Asegúrate de añadir STATICFILES_DIRS para que Django encuentre el directorio 'static'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    BASE_DIR / "reservation/static",  # Crea la carpeta si planeas usar archivos estáticos aquí
 ]
 
 # Default primary key field type

@@ -20,8 +20,9 @@ from rest_framework.routers import DefaultRouter
 from reservation.views import BookingViewSet
 
 
-router = DefaultRouter
-router.register(r'booking', BookingViewSet)
+router = DefaultRouter()
+router.register(r'tables', BookingViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
